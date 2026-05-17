@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.css";
 function Sidebar() {
+
   const links = [
     { icon: "fa-chart-bar", title: "Status", path: "/" },
     { icon: "fa-users", title: "Users Management", path: "/users" },
     { icon: "fa-building", title: "Projects Management", path: "/projects" },
-    { icon: "fa-building", title: "Developers Management" },
-    { icon: "fa-users", title: "Cms" },
-    { icon: "fa-message", title: "Live Chat" },
+    { icon: "fa-building", title: "Developers Management", path: "/developers" },
+    { icon: "fa-users", title: "Cms", path: "/cms" },
+    { icon: "fa-message", title: "Live Chat", path: "/live-chat" },
   ];
 
   return (
