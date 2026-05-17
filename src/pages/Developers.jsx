@@ -1,12 +1,17 @@
 
-
+    import {Outlet} from "react-router-dom";
 
 
 function Developers() {
   return (
     <div>
 
-      <h1>Developers Page</h1>
+            <section className="py-4">
+
+                <Outlet />
+
+            </section>
+
  
   
  
@@ -16,3 +21,5 @@ function Developers() {
 
 export default Developers;
 
+// Alhamd LLah 
+// i have finished Task 1

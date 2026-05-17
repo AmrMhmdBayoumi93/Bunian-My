@@ -39,19 +39,19 @@ function Dashboard() {
             <Route path="/" element={<StatusPage/>} />
 
             <Route path="/users" element={<User/>}  >
-              <Route index element={<TableDashboard  header="Users" target="users"/>} />
+              <Route index element={<TableDashboard  header="Users" target="Users"/>} />
               <Route path="add" element ={<FormDashboard/>} />
            
 
 
 
-           
+
             </Route>
             
              
 
             <Route path="/projects" element={<Projects/>}  >
-             <Route index element={<TableDashboard  header="Projects" target="projects"/>} />
+             <Route index element={<TableDashboard  header="Projects" target="Project"/>} />
               <Route path="add" element ={<FormDashboard/>} />
            
             </Route>
@@ -65,7 +65,7 @@ function Dashboard() {
             <Route path="/developers" element={<Developers/>}  >
 
  
-            <Route index element={<TableDashboard  header="Developers" target="developers"/>} />
+            <Route index element={<TableDashboard  header="Developers" target="Developer"/>} />
               <Route path="add" element ={<FormDashboard/>} />  
 
             </Route>
