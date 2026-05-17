@@ -37,18 +37,38 @@ function Dashboard() {
            <Routes>
           
             <Route path="/" element={<StatusPage/>} />
+
             <Route path="/users" element={<User/>}  >
-              <Route index element={<TableDashboard/>} />
+              <Route index element={<TableDashboard  header="Users" target="users"/>} />
               <Route path="add" element ={<FormDashboard/>} />
+           
+
+
+
            
             </Route>
             
              
 
-            <Route path="/projects" element={<Projects/>} />
+            <Route path="/projects" element={<Projects/>}  >
+             <Route index element={<TableDashboard  header="Projects" target="projects"/>} />
+              <Route path="add" element ={<FormDashboard/>} />
+           
+            </Route>
+
+
+
+
+
+
             
-            
-            <Route path="/developers" element={<Developers/>} />
+            <Route path="/developers" element={<Developers/>}  >
+
+ 
+            <Route index element={<TableDashboard  header="Developers" target="developers"/>} />
+              <Route path="add" element ={<FormDashboard/>} />  
+
+            </Route>
             
             
             

@@ -8,7 +8,7 @@ function Developers() {
 
       <h1>Developers Page</h1>
  
- 
+  
  
     </div>
   );
