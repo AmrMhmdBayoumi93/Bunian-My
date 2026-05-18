@@ -27,12 +27,10 @@ import LifeChat from "./LifeChat.jsx";
 
 function Dashboard() {
 
+     // useState  // to show the red dot on the users management link in the sidebar when the form is filled and the user is added successfully
   const [draft, setDraft] = useState(false);
  
-//   const handleDraft = () => {
-//   setDraft(true);
-// }
-
+ 
   return (
     <>
       <Navbar adminName="mohamed" />

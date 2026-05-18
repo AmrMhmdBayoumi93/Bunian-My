@@ -24,7 +24,7 @@ function Sidebar({ draft }) {
           >
             <i className={`fa-solid ${item.icon} fs-5`}></i>
             <span className="fs-5">{item.title}</span>
-            {draft && item.title === "Users Management" && <i className="fa-solid fa-circle"></i>}
+            {draft && item.title === "Users Management" && <i  className="fa-solid fa-circle" style={{ color: 'green' }} ></i>}
             
             {/* // {item.title === "Users Management" && show && <i class="fa-solid fa-circle"></i>}  */}
 
