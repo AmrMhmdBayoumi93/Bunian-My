@@ -23,15 +23,22 @@ import LifeChat from "./LifeChat.jsx";
 
   import FormDashboard from "../components/Dashborad/ui/FormDashboard/FormDashboard.jsx";
   import TableDashboard from "../components/Dashborad/ui/TableDashboard/TableDashboard.jsx";
-
+  import { useState } from "react";
 
 function Dashboard() {
+
+  const [draft, setDraft] = useState(false);
+ 
+//   const handleDraft = () => {
+//   setDraft(true);
+// }
+
   return (
     <>
       <Navbar adminName="mohamed" />
 
       <div className="d-flex">
-        <Sidebar />
+        <Sidebar  draft={draft}/>
          <main className="flex-grow-1 p-4">
 
            <Routes>
@@ -40,7 +47,7 @@ function Dashboard() {
 
             <Route path="/users" element={<User/>}  >
               <Route index element={<TableDashboard  header="Users" target="Users"/>} />
-              <Route path="add" element ={<FormDashboard/>} />
+              <Route path="add" element ={<FormDashboard draft={draft} setDraft={setDraft}/>} />
            
 
 

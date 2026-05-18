@@ -8,8 +8,10 @@
 function User() {
   return (
     <div>
-      <section className="py-4"></section> 
-       <Outlet />
+      <section className="py-4">       <Outlet /> 
+      
+      </section> 
+ 
         
 
     </div>

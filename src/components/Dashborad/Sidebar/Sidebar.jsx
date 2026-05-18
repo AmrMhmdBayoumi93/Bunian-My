@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.css";
-function Sidebar() {
+function Sidebar({ draft }) {
 
   const links = [
     { icon: "fa-chart-bar", title: "Status", path: "/" },
@@ -24,6 +24,10 @@ function Sidebar() {
           >
             <i className={`fa-solid ${item.icon} fs-5`}></i>
             <span className="fs-5">{item.title}</span>
+            {draft && item.title === "Users Management" && <i className="fa-solid fa-circle"></i>}
+            
+            {/* // {item.title === "Users Management" && show && <i class="fa-solid fa-circle"></i>}  */}
+
           </NavLink>
         ))}
       </nav>
