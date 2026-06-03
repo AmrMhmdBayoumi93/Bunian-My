@@ -1,12 +1,15 @@
 
-
+    const bcrypt=require('bcrypt')
 const { required } = require('joi')
+
 const mongoose =require('mongoose')
-    const admniSchema = new mongoose.Schema(
+
+    const adminSchema = new mongoose.Schema(
         {  
 
          userName:{ 
-            type:string, 
+
+            type:String, 
             required:[true,"userName is required"]
               
          }
@@ -16,17 +19,24 @@ const mongoose =require('mongoose')
         required:[true,"email is required"]
 
             },
+
             password:{
        type: String,
         required:[true,"password is required"],
         minlength: 6,
+        select:false
             },
 
 
 
        }
 
-, { timestamps:true})
+ , 
+  { timestamps:true})
+
+
+
+
 
 adminSchema.pre("save", async function(next){
     if(!this.isModified("password")) return next(); //to check if the password is modified or not 
@@ -34,6 +44,8 @@ adminSchema.pre("save", async function(next){
 
     this.password = await bcrypt.hash(this.password,10);
 })
+
+
 
 adminSchema.methods.comparePassword= async function(matchedPassword){
     return await bcrypt.compare(matchedPassword,this.password);
@@ -46,11 +58,14 @@ module.exports = Admin;
 
 
 
-// HW  search these points
+// HW LEC1  search these points
 
 
 //search encapsulation ask to put it in a scenario 
 //seed explain the seed for node.js project
 //Hooks of mongoose
+
+
+
 
 
