@@ -1,108 +1,51 @@
-            // Bunian 
-
-// 1. Load variables natively from the root .env file
+// Dotenv
 require("dotenv").config();
-
-// 2. Packages
-
-
-const express = require('express');
-const mongoose = require("mongoose");
-const connectedDB = require("./config/db");
-const morgan = require("morgan");
-
-
-
-// 3. Initialize Express
+// express
+const express = require("express");
 const app = express();
- 
-// 4. Global Middleware
-app.use(express.json());
+// Step 0
+const http = require("http");
+const server = http.createServer(app);
 
-// 5. Fire DB Connection 
+const morgan = require("morgan");
+// middleware json
+app.use(express.json());
+// connection DB
+// Simple Logger
+if (process.env.NODE_ENV === "dev") {
+  app.use(morgan("dev"));
+}
+// Test Route
+app.get("/test", (req, res) => {
+  res.json({ msg: "Test Route" });
+});
+
+const connectedDB = require("./config/db");
 connectedDB();
 
-// 6. Simple Logger
-if (process.env.NODE_ENV === "dev") {
+const adminRoutes = require("./routes/auth.route");
+const userRoutes = require("./routes/user.route");
+const userAuthRoutes = require("./routes/authUser.route");
 
-    app.use(morgan("dev"))
+app.use("/api/dashboard", adminRoutes);
+app.use("/api/dashboard/users", userRoutes);
+app.use("/api/users", userAuthRoutes);
 
-
-
-    app.use((req, res, next) => {
-        console.log(`${req.method}  ${req.originalUrl}`);
-        next();
-    });
-}
-
-
-
-
-// 7. Test Route
-
-
-app.get("/test", (req, res) => {
-    res.json({ msg: "Test Route Successfully ya amoooooor" });
+// Init Socket Server => 1
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  // Configuration Server Node
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
 });
 
+require("./sockets/chat.socket")(io);
 
-
-
-const adminRoutes=require("./routes/auth.route")
-    
-// 
-
-app.use('/api/dashboard' ,adminRoutes )
-
-
-
-
-
-
-
-
-
-
-// 8. Server Setup
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log(`Server is Running on port ${port}`);
+// Port
+const port = process.env.PORT || 3000;
+// Run Server
+server.listen(port, () => {
+  console.log(`Server Is Running ${port}`);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//lec 1 search 
-
-
-// HW  search these points
-
-
-          //search encapsulation ask to put it in a scenario 
-             //seed explain the seed for node.js project
-             //Hooks of mongoose  
-
-
-
-
-
-
-
-
-
-
-
-
-
